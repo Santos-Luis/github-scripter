@@ -1,0 +1,24 @@
+{
+  "name": "github-scripter",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santos-Luis/github-scripter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Santos-Luis/github-scripter/issues"
+  },
+  "homepage": "https://github.com/Santos-Luis/github-scripter#readme",
+  "dependencies": {
+    "@octokit/rest": "^18.0.15"
+  }
+}
