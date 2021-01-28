@@ -1,1 +1,1 @@
-# github-scripter
+# github-scripter non-dependabot
