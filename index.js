@@ -10,6 +10,7 @@ const labelName = 'dependencies';
 const primaryBranch = 'refs/heads/main';
 const newBranch = 'refs/heads/dependabot-master';
 
+// get branches references
 const getRefs = await octokit.request(
     'GET /repos/:owner/:repo/git/refs/head',
     {
@@ -24,6 +25,7 @@ const mainBranch = getRefs.data.find(({ ref }) => (
 
 const sha = mainBranch.object.sha;
 
+// create the new branch (dependabot-master)
 await octokit.request(
     'POST /repos/:owner/:repo/git/refs', 
     {
@@ -34,6 +36,7 @@ await octokit.request(
     }
 );
 
+// get all open PRs that have the 'notification' label
 const pullsSearch = await octokit.request('GET /search/issues', {
     q: `is:pr+
         state:open+
@@ -45,6 +48,8 @@ const pullsSearch = await octokit.request('GET /search/issues', {
 const pullsWithLable = pullsSearch.data.items;
 
 pullsWithLable.forEach(async ({ number }) => {
+    
+    // update the base branch to the new one 
     await octokit.pulls.update({
         owner,
         repo,
@@ -52,12 +57,14 @@ pullsWithLable.forEach(async ({ number }) => {
         base: 'dependabot-master',
     });
 
+    // rebase, in case something is merged
     await octokit.pulls.updateBranch({
         owner,
         repo,
         pull_number: number,
     });
 
+    // merge to the dependabot-master branch
     await octokit.pulls.merge({
         owner,
         repo,
@@ -65,6 +72,7 @@ pullsWithLable.forEach(async ({ number }) => {
     });
 });
 
+// create a new PR to the dependabot-master branch
 await octokit.pulls.create({
     owner,
     repo,
