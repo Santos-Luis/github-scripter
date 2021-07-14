@@ -1,0 +1,6 @@
+dependencies:
+- name: pipedrive-template
+  repository: https://helm-charts.pipedrive.tools/templates
+  version: 0.14.0
+digest: sha256:293c524487471933cb4d1fc6b603e8fa3bd413e510322445a8d93e01f8cd2435
+generated: "2021-07-14T11:55:51.880584+01:00"
