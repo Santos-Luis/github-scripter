@@ -1,0 +1,7 @@
+{
+    "name": "name",
+    "type": "service",
+    "status": "production",
+    "tags": [],
+    "region-type": "multi-region"
+}
