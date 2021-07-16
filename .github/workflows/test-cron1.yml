@@ -15,6 +15,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions-ecosystem/action-add-labels@v1
         with:
-          github_token: ${{secrets.GH_TOKEN}}
+          github_token: ${{ secrets.github_token }}
           number: 2
           labels: test-4
