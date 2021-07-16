@@ -1,12 +1,16 @@
 name: Add Label
 
+
+
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: 'Person to greet'
-        required: false
-        default: 'Mona the Octocat'
+      cron_input:
+        description: 'Cron time'
+        required: true
+        default: '* * * * *'
+  schedule:
+    - cron: ${{ github.event.inputs.cron_input }}
 
 jobs:
   add_label:
