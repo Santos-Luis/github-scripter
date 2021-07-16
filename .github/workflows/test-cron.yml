@@ -2,7 +2,7 @@ name: Add Label
 
 on:
   workflow_dispatch:
-  inputs:
+    inputs:
       name:
         description: 'Person to greet'
         required: true
